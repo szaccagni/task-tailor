@@ -10,29 +10,29 @@ export const todoRouter = createTRPCRouter({
             userId: ctx.session.user.id
         }
     })
-    console.log("todos from prisma", todos.map(({id, title, description, done}) => ({id, title, description, done})))
-    return [
-        {
-            id: '1',
-            title: 'task 1',
-            description: 'this is the first fakse test task',
-            dueDate: Date.now(),
-        },
-        {
-            id: '2',
-            title: 'task 2',
-            description: 'this is the second fakse test task',
-            dueDate: Date.now(),
-            inProgress: true
-        },
-        {
-            id: '3',
-            title: 'task 3',
-            description: 'this is the third fakse test task',
-            dueDate: Date.now(),
-            done: true
-        }
-    ]
+    return todos.map(({id, title, description, done}) => ({id, title, description, done}))
+    // return [
+    //     {
+    //         id: '1',
+    //         title: 'task 1',
+    //         description: 'this is the first fake test task',
+    //         dueDate: Date.now(),
+    //     },
+    //     {
+    //         id: '2',
+    //         title: 'task 2',
+    //         description: 'this is the second fake test task',
+    //         dueDate: Date.now(),
+    //         inProgress: true
+    //     },
+    //     {
+    //         id: '3',
+    //         title: 'task 3',
+    //         description: 'this is the third fake test task',
+    //         dueDate: Date.now(),
+    //         done: true
+    //     }
+    // ]
   }),
 
   create: protectedProcedure.input(todoInput).mutation(async ({ctx, input}) => {
